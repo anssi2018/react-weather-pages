@@ -30,6 +30,7 @@
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "6.26.0",
     "chalk": "^2.3.2",
     "compression": "1.7.2",
@@ -57,7 +58,8 @@
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
     "warning": "^4.0.1",
-    "whatwg-fetch": "2.0.4"
+    "whatwg-fetch": "2.0.4",
+    "xml-js": "^1.6.8"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "2.1.3",
