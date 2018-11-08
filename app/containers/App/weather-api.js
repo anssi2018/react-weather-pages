@@ -2,16 +2,19 @@ import axios from 'axios';
 import Immutable from 'immutable';
 import * as convert from 'xml-js';
 
-const FMI_API_KEY = 'YOUR_KEY_HERE';
+const FMI_API_KEY = 'acfc8a65-9ac2-45b6-95b9-c9524d711b36';
 const CURRENTWEATHER_HISTORY_MINUTES = 30;
 const STATIONS_HISTORY_MINUTES = 30;
+
 
 // fmi::observations::weather::cities::simple
 // fmi::forecast::hirlam::surface::point::simple
 
-export function getForcast(location) {
+export function getForecast(location) {
+  // console.log('weather-api getForecast location= ', location);
   const cleanedLocation = location.replace(/\s/g, '').split(',');
   const queryLocation = `${cleanedLocation[0]}`;
+  // console.log('weather-api getForecast queryLocation= ', queryLocation);
   return axios({
     url: `http://data.fmi.fi/fmi-apikey/${FMI_API_KEY}/wfs?request=getFeature&storedquery_id=fmi::forecast::hirlam::surface::point::simple&place=${queryLocation}`,
     method: 'GET',
@@ -32,7 +35,6 @@ export function getForcast(location) {
         const timeElem = timebased.get(time, Immutable.Map({ time }));
         timebased = timebased.set(time, timeElem.set(param, value));
       });
-
       return timebased.sortBy((v, k) => new Date(k));
     });
 }
@@ -40,6 +42,7 @@ export function getForcast(location) {
 export function getCurrentWeather(fmisid) {
   const starttime = new Date();
   starttime.setMinutes(starttime.getMinutes() - CURRENTWEATHER_HISTORY_MINUTES);
+  console.log('weather-api getCurrentWeather fmisid= ', fmisid);
   return axios({
     url: `http://data.fmi.fi/fmi-apikey/${FMI_API_KEY}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::simple&fmisid=${fmisid}&starttime=${starttime.toISOString()}`,
     method: 'GET',

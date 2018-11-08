@@ -17,13 +17,14 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import './style.scss';
 
+
 const App = () => (
   <div className="app-wrapper">
     <Helmet
-      titleTemplate="%s - React.js Boilerplate"
-      defaultTitle="React.js Boilerplate"
+      titleTemplate="%s - React.js Weather app"
+      defaultTitle="React.js Weather app"
     >
-      <meta name="description" content="A React.js Boilerplate application" />
+      <meta name="description" content="A React.js Weather pages application" />
     </Helmet>
     <Header />
     <Switch>
