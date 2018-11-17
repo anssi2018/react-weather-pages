@@ -3,7 +3,7 @@ import './style.scss';
 
 const Footer = () => (
   <footer>
-    <section></section>
+    <section>React Weather App 2018 - JAMK YAMK</section>
   </footer>
 );
 
