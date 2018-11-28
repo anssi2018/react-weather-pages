@@ -17,6 +17,7 @@ export function getForecast(location) {
   // console.log('weather-api getForecast queryLocation= ', queryLocation);
   return axios({
     url: `http://data.fmi.fi/fmi-apikey/${FMI_API_KEY}/wfs?request=getFeature&storedquery_id=fmi::forecast::hirlam::surface::point::simple&place=${queryLocation}`,
+    // url: `http://data.fmi.fi/fmi-apikey/${FMI_API_KEY}/wfs?request=getFeature&storedquery_id=fmi::forecast::hirlam::surface::point::simple&place=${'Oulu'}`, // Parainen ei mene läpi
     method: 'GET',
     responseType: 'text',
   })
